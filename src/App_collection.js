@@ -26,6 +26,7 @@ function App() {
     )
       .then((response) => response.json())
       .then((response) => {
+        // setData(response.assets)
         setData(response.collection)
         console.log(response)
       })
@@ -36,15 +37,17 @@ function App() {
     <div className="App">
       <button onClick={connect}>Connect</button>
       <p>{account}</p>
-      {/* <div>
+      <div>
         {data.map((nft) => {
           return (
             <div>
+              {/* <img src={nft.image_url} /> */}
               <p>{nft.name}</p>
+              {/* <p>{nft.token_id}</p> */}
             </div>
           )
         })}
-      </div> */}
+      </div>
     </div>
   )
 }

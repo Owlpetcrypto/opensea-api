@@ -19,14 +19,12 @@ function App() {
     const options = { method: 'GET', headers: { accept: 'application/json' } }
 
     fetch(
-      // `https://api.opensea.io/api/v1/assets?owner=${_account}&order_direction=desc&limit=20&include_orders=false`,
-      // options,
-      'https://api.opensea.io/api/v1/collection/vaynersports-pass-vsp',
+      `https://api.opensea.io/api/v1/assets?owner=${_account}&order_direction=desc&limit=20&include_orders=false`,
       options,
     )
       .then((response) => response.json())
       .then((response) => {
-        setData(response.collection)
+        setData(response.assets)
         console.log(response)
       })
       .catch((err) => console.error(err))
@@ -36,15 +34,17 @@ function App() {
     <div className="App">
       <button onClick={connect}>Connect</button>
       <p>{account}</p>
-      {/* <div>
+      <div>
         {data.map((nft) => {
           return (
             <div>
+              <img src={nft.image_thumbnail_url} />
               <p>{nft.name}</p>
+              <p>{nft.token_id}</p>
             </div>
           )
         })}
-      </div> */}
+      </div>
     </div>
   )
 }
